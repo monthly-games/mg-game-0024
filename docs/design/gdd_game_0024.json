@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "game_id": "game_0024",
+    "code_name": "MG-0024",
+    "title_kr": "레전드 페스티벌: 크로스이벤트",
+    "title_en": "Legend Festival: Cross Event",
+    "version": "0.1.0",
+    "last_updated": "2026-06-01"
+  },
+  "overview": {
+    "genre_tags": ["crossgame", "raid", "event", "hub", "meta"],
+    "target_audience": {
+      "age": "All Monthly Games players",
+      "region": ["All"],
+      "play_style": "cross-audience"
+    },
+    "core_loop": "Monthly Games의 여러 게임에서 획득한 캐릭터로 팀을 구성하여 크로스 게임 레이드와 이벤트에 참여하고, 모든 게임에서 사용 가능한 보상을 획득한다",
+    "unique_selling_point": "여러 게임을 하나로 연결하는 메타 레이어, 게임 간 시너지와 크로스 프로모션",
+    "year_2_role": "여러 게임을 묶는 크로스 게임 메타/허브 역할"
+  },
+  "gameplay": {
+    "core_mechanics": [
+      {
+        "name": "크로스 게임 팀 빌딩",
+        "description": "다양한 Monthly Games에서 가져온 캐릭터로 최강 팀 구성"
+      },
+      {
+        "name": "대규모 레이드",
+        "description": "전체 플레이어가 협력하여 거대 보스 격파"
+      },
+      {
+        "name": "게임 간 이벤트",
+        "description": "여러 게임에서 동시에 진행되는 연동 이벤트"
+      },
+      {
+        "name": "통합 보상 시스템",
+        "description": "획득한 보상을 모든 연동 게임에서 사용 가능"
+      },
+      {
+        "name": "페스티벌 시즌",
+        "description": "정기적인 대규모 이벤트 시즌, 리더보드 경쟁"
+      }
+    ],
+    "progression": {
+      "type": "cross_game",
+      "description": "개별 게임 진행도 → 크로스 게임 파워 → 페스티벌 랭크"
+    },
+    "session_length": "5-15분 (레이드 참여), 30분+ (페스티벌 이벤트)"
+  },
+  "cross_game_system": {
+    "supported_games": {
+      "integration_level_1": {
+        "description": "기본 캐릭터 연동",
+        "games": ["mg-game-0019", "mg-game-0020", "mg-game-0021"],
+        "features": ["캐릭터 가져오기", "스탯 변환", "기본 스킬"]
+      },
+      "integration_level_2": {
+        "description": "심화 연동",
+        "games": ["mg-game-0022", "mg-game-0023"],
+        "features": ["고유 능력 유지", "게임별 버프", "스킨 연동"]
+      },
+      "integration_level_3": {
+        "description": "완전 연동",
+        "games": ["future games"],
+        "features": ["실시간 동기화", "진행도 공유", "크로스 세이브"]
+      }
+    },
+    "character_import": {
+      "mechanism": "각 게임의 계정 연동을 통해 보유 캐릭터 자동 임포트",
+      "stat_conversion": "각 게임의 스탯을 통합 스탯 시스템으로 변환",
+      "level_sync": "페스티벌 레벨 = 원본 게임 레벨의 변환값",
+      "update_frequency": "real-time or daily sync"
+    },
+    "team_building": {
+      "team_size": 5,
+      "restrictions": {
+        "max_per_game": 3,
+        "synergy_bonus": "다양한 게임 캐릭터 조합 시 보너스"
+      },
+      "formations": ["balanced", "offensive", "defensive", "support"],
+      "strategy": "게임별 캐릭터 특성을 고려한 팀 구성"
+    }
+  },
+  "raid_system": {
+    "raid_types": [
+      {
+        "type": "world_raid",
+        "name": "월드 레이드",
+        "description": "전체 플레이어가 협력하여 격파",
+        "duration": "7 days",
+        "participation": "unlimited",
+        "rewards": "contribution-based"
+      },
+      {
+        "type": "guild_raid",
+        "name": "길드 레이드",
+        "description": "길드원들이 협력하여 도전",
+        "duration": "3 days",
+        "participation": "guild members only",
+        "rewards": "guild ranking + individual contribution"
+      },
+      {
+        "type": "alliance_raid",
+        "name": "얼라이언스 레이드",
+        "description": "여러 길드가 연합하여 도전",
+        "duration": "14 days",
+        "participation": "alliance members",
+        "rewards": "alliance ranking + rare items"
+      },
+      {
+        "type": "seasonal_boss",
+        "name": "시즌 보스",
+        "description": "시즌별 특별 보스",
+        "duration": "30 days",
+        "participation": "all players",
+        "rewards": "exclusive seasonal rewards"
+      }
+    ],
+    "boss_mechanics": {
+      "health_pool": "scaled to player participation",
+      "phases": "multiple phases with different mechanics",
+      "weaknesses": "different game characters have different effectiveness",
+      "special_events": "boss triggers events in connected games"
+    },
+    "contribution_system": {
+      "damage_dealt": "primary metric",
+      "healing_support": "secondary metric",
+      "survival_time": "bonus metric",
+      "special_actions": "unique contributions (buffs, debuffs, crowd control)"
+    }
+  },
+  "festival_seasons": {
+    "structure": {
+      "duration": "3 months per season",
+      "themes": "rotating themes (fantasy, sci-fi, horror, etc.)",
+      "progression": "season levels 1-100",
+      "rewards": "free track + premium track"
+    },
+    "season_events": [
+      {
+        "event_type": "cross_game_challenge",
+        "description": "여러 게임에서 특정 목표 달성",
+        "example": "모든 연동 게임에서 일일 퀘스트 완료",
+        "reward": "completion bonus + exclusive title"
+      },
+      {
+        "event_type": "mega_raid",
+        "description": "시즌 최종 보스 레이드",
+        "example": "전 플레이어가 협력하여 시즌 보스 격파",
+        "reward": "season exclusive legendary items"
+      },
+      {
+        "event_type": "pvp_tournament",
+        "description": "크로스 게임 PvP 토너먼트",
+        "format": "bracket elimination",
+        "reward": "top rankers get exclusive rewards"
+      },
+      {
+        "event_type": "game_spotlight",
+        "description": "특정 게임 집중 조명 주간",
+        "benefit": "해당 게임 플레이 시 페스티벌 포인트 2배",
+        "purpose": "신규 유저 유입 촉진"
+      }
+    ],
+    "leaderboards": {
+      "individual": "contribution points",
+      "guild": "guild total contribution",
+      "game_specific": "각 게임별 최고 기여자",
+      "rewards": "rank-based exclusive items"
+    }
+  },
+  "economy": {
+    "currencies": [
+      {
+        "name": "페스티벌 코인",
+        "type": "event",
+        "sources": ["레이드 참여", "이벤트 완료", "일일 미션"],
+        "sinks": ["페스티벌 상점", "시즌 패스 업그레이드"],
+        "transferable": "all connected games can use"
+      },
+      {
+        "name": "레전드 토큰",
+        "type": "premium",
+        "sources": ["인앱 구매", "시즌 보상", "특별 이벤트"],
+        "sinks": ["프리미엄 아이템", "시즌 패스", "스킨"],
+        "transferable": "all connected games"
+      },
+      {
+        "name": "크로스 젬",
+        "type": "hard",
+        "sources": ["여러 게임에서 동시 플레이 보너스", "크로스 게임 업적"],
+        "sinks": ["독점 캐릭터", "크로스 게임 스킨"],
+        "special": "can only be earned through cross-game activities"
+      }
+    ],
+    "unified_rewards": {
+      "description": "페스티벌에서 얻은 보상을 모든 연동 게임에서 사용 가능",
+      "examples": [
+        "universal upgrade materials",
+        "cross-game currency packs",
+        "exclusive skins (all games)",
+        "stat boost items (transferable)"
+      ]
+    },
+    "monetization": {
+      "model": "F2P + IAP + Season Pass",
+      "iap_items": ["레전드 토큰 패키지", "시즌 패스", "크로스 게임 번들"],
+      "season_pass": {
+        "cost": { "currency": "usd", "amount": 9.99 },
+        "duration": "3 months",
+        "rewards": "exclusive cross-game items"
+      },
+      "cross_promotion": "playing multiple games gives bonus rewards"
+    }
+  },
+  "technical": {
+    "platform": ["Android", "iOS", "Web"],
+    "engine": "Flutter + Flame",
+    "backend": "Unified Backend + Game Bridge APIs",
+    "analytics": "GA4 + BigQuery + Cross-Game Tracker",
+    "integration": "REST APIs + WebSocket (real-time raids)",
+    "account_system": "Single Sign-On across all Monthly Games"
+  },
+  "common_modules": {
+    "cross_game_api": {
+      "description": "게임 간 데이터 연동 API",
+      "features": ["캐릭터 동기화", "진행도 공유", "보상 전송", "이벤트 트리거"]
+    },
+    "unified_account_system": {
+      "description": "통합 계정 관리",
+      "features": ["SSO", "프로필 통합", "진행도 추적", "보상 관리"]
+    },
+    "raid_orchestration": {
+      "description": "대규모 레이드 관리 시스템",
+      "features": ["참여자 관리", "실시간 집계", "보상 분배", "스케일링"]
+    },
+    "event_scheduler": {
+      "description": "크로스 게임 이벤트 스케줄러",
+      "features": ["이벤트 동기화", "시간대 관리", "자동 시작/종료", "알림"]
+    }
+  },
+  "player_benefits": {
+    "multi_game_players": {
+      "synergy_bonus": "2+ 게임 플레이 시 보너스 보상",
+      "exclusive_content": "크로스 플레이어만 접근 가능한 컨텐츠",
+      "enhanced_rewards": "모든 게임에서 보상 증가"
+    },
+    "single_game_players": {
+      "incentive": "다른 게임 시작을 유도하는 보상",
+      "gateway": "페스티벌이 다른 게임으로의 입구 역할",
+      "standalone_value": "단일 게임만으로도 충분한 가치 제공"
+    }
+  }
+}

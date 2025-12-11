@@ -1,0 +1,14 @@
+{
+  "game_id": "game_0024",
+  "code_name": "MG-0024",
+  "title_kr": "레전드 페스티벌: 크로스이벤트",
+  "title_en": "Legend Festival: Cross Event",
+  "genre_tags": ["crossgame", "raid", "event", "hub", "meta"],
+  "target_region": ["All"],
+  "engine_version": "1.0.0",
+  "analytics_profile": "default_v1",
+  "created_at": "2026-06-01",
+  "status": "development",
+  "year": 2,
+  "role": "여러 게임을 묶는 크로스 게임 메타/허브 역할"
+}
