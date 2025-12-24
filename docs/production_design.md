@@ -295,7 +295,7 @@ int contributionReward(int rank, int totalContribution, RaidType type) {
 - [ ] 특별 레이드
 
 ### 수익화
-- [ ] 시즌 패스
+- [x] 시즌 패스 (SeasonManager: XP/레벨, 보상 청구)
 - [ ] IAP 상품
 - [ ] 크로스 번들
 - [ ] VIP 멤버십
@@ -331,3 +331,4 @@ int contributionReward(int rank, int totalContribution, RaidType type) {
 ---
 
 *마지막 업데이트: 2025-12-19*
+
