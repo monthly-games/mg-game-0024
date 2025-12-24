@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:game/features/raid/raid_manager.dart';
-import 'package:game/core/models.dart';
 
 void main() {
   group('Raid Logic Tests', () {

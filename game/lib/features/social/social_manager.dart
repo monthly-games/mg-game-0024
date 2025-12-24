@@ -18,8 +18,8 @@ class SocialManager extends ChangeNotifier {
       id: 'g_${DateTime.now().millisecondsSinceEpoch}',
       name: name,
       description: description,
-      members: [
-        const GuildMember(
+      members: const [
+        GuildMember(
           name: 'Player',
           role: 'Leader',
           contribution: 0,
@@ -49,7 +49,7 @@ class SocialManager extends ChangeNotifier {
 
     _globalLeaderboard = List.generate(10, (index) {
       return LeaderboardEntry(
-        playerName: names[index % names.length] + '#${rng.nextInt(9999)}',
+        playerName: '${names[index % names.length]}#${rng.nextInt(9999)}',
         score: 50000 - (index * 2000) - rng.nextInt(1000),
         rank: index + 1,
       );

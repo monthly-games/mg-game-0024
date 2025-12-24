@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/social/social_manager.dart';
-import '../features/social/social_models.dart';
 
 class GuildScreen extends StatefulWidget {
   const GuildScreen({super.key});

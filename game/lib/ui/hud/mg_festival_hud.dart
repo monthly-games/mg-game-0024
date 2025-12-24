@@ -42,7 +42,7 @@ class MGFestivalHud extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.all(MGSpacing.sm),
+        padding: const EdgeInsets.all(MGSpacing.sm),
         child: Column(
           children: [
             // 상단 HUD
@@ -72,7 +72,7 @@ class MGFestivalHud extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(width: MGSpacing.sm),
+                const SizedBox(width: MGSpacing.sm),
                 if (onPause != null)
                   MGIconButton(
                     icon: Icons.pause,
@@ -81,7 +81,7 @@ class MGFestivalHud extends StatelessWidget {
                   ),
               ],
             ),
-            SizedBox(height: MGSpacing.sm),
+            const SizedBox(height: MGSpacing.sm),
             // 팀 정보
             _buildTeamInfo(),
             const Spacer(),
@@ -89,7 +89,7 @@ class MGFestivalHud extends StatelessWidget {
             _buildBossPanel(),
             // 레이드 타이머
             if (raidTimeRemaining != null) ...[
-              SizedBox(height: MGSpacing.sm),
+              const SizedBox(height: MGSpacing.sm),
               _buildRaidTimer(),
             ],
           ],
@@ -100,7 +100,7 @@ class MGFestivalHud extends StatelessWidget {
 
   Widget _buildSeasonInfo() {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: MGSpacing.sm,
         vertical: MGSpacing.xs,
       ),
@@ -117,8 +117,8 @@ class MGFestivalHud extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.celebration, color: Colors.white, size: 18),
-          SizedBox(width: MGSpacing.xs),
+          const Icon(Icons.celebration, color: Colors.white, size: 18),
+          const SizedBox(width: MGSpacing.xs),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -148,7 +148,7 @@ class MGFestivalHud extends StatelessWidget {
     return GestureDetector(
       onTap: onTeam,
       child: Container(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: MGSpacing.sm,
           vertical: MGSpacing.xs,
         ),
@@ -160,8 +160,8 @@ class MGFestivalHud extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.group, color: Colors.cyan, size: 18),
-            SizedBox(width: MGSpacing.xs),
+            const Icon(Icons.group, color: Colors.cyan, size: 18),
+            const SizedBox(width: MGSpacing.xs),
             Text(
               'Team Power: ',
               style: MGTextStyles.caption.copyWith(
@@ -176,8 +176,8 @@ class MGFestivalHud extends StatelessWidget {
               ),
             ),
             if (onTeam != null) ...[
-              SizedBox(width: MGSpacing.xs),
-              Icon(Icons.edit, color: Colors.white54, size: 14),
+              const SizedBox(width: MGSpacing.xs),
+              const Icon(Icons.edit, color: Colors.white54, size: 14),
             ],
           ],
         ),
@@ -190,7 +190,7 @@ class MGFestivalHud extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(MGSpacing.sm),
+      padding: const EdgeInsets.all(MGSpacing.sm),
       decoration: BoxDecoration(
         color: MGColors.surface.withOpacity(0.9),
         borderRadius: BorderRadius.circular(MGSpacing.sm),
@@ -209,8 +209,8 @@ class MGFestivalHud extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.whatshot, color: Colors.red, size: 20),
-              SizedBox(width: MGSpacing.xs),
+              const Icon(Icons.whatshot, color: Colors.red, size: 20),
+              const SizedBox(width: MGSpacing.xs),
               Text(
                 bossName,
                 style: MGTextStyles.h3.copyWith(
@@ -220,7 +220,7 @@ class MGFestivalHud extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: MGSpacing.sm),
+          const SizedBox(height: MGSpacing.sm),
           // HP 바
           MGLinearProgress(
             value: hpRatio,
@@ -228,7 +228,7 @@ class MGFestivalHud extends StatelessWidget {
             backgroundColor: Colors.red.withOpacity(0.2),
             progressColor: Colors.red,
           ),
-          SizedBox(height: MGSpacing.xs),
+          const SizedBox(height: MGSpacing.xs),
           // HP 수치
           Text(
             '${_formatNumber(bossHp)} / ${_formatNumber(bossMaxHp)}',
@@ -247,7 +247,7 @@ class MGFestivalHud extends StatelessWidget {
     final bool isLowTime = raidTimeRemaining! < 30;
 
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: MGSpacing.md,
         vertical: MGSpacing.xs,
       ),
@@ -263,12 +263,12 @@ class MGFestivalHud extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          const Icon(
             Icons.timer,
             color: Colors.white,
             size: 18,
           ),
-          SizedBox(width: MGSpacing.xs),
+          const SizedBox(width: MGSpacing.xs),
           Text(
             '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
             style: MGTextStyles.h3.copyWith(

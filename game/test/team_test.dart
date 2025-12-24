@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:game/features/team/team_manager.dart';
-import 'package:game/core/models.dart';
 
 void main() {
   group('Team Logic Tests', () {
