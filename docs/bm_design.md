@@ -1,7 +1,13 @@
-# 레전드 페스티벌: 크로스이벤트 - BM 설계 문서
+﻿# 레전드 페스티벌: 크로스이벤트 - BM 설계 문서
 
 > game_id: game_0024
 > repo: mg-game-0024
+> title_kr: 레전드 페스티벌: 크로스이벤트
+> title_en: Legend Festival: Cross Event
+> genre_tags: crossgame, raid, event, hub, meta
+> doc_type: bm_design
+> source_of_truth: docs/design/gdd_game_0024.json
+> last_updated: 2025-12-19
 
 ---
 

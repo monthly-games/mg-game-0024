@@ -1,4 +1,13 @@
-# game_0024 수익화 전략 - 레전드 페스티벌: 크로스이벤트
+﻿# game_0024 수익화 전략 - 레전드 페스티벌: 크로스이벤트
+
+> game_id: game_0024
+> repo: mg-game-0024
+> title_kr: 레전드 페스티벌: 크로스이벤트
+> title_en: Legend Festival: Cross Event
+> genre_tags: crossgame, raid, event, hub, meta
+> doc_type: monetization_design
+> source_of_truth: docs/design/gdd_game_0024.json
+> last_updated: 2025-12-19
 
 ## 게임 개요
 - **장르**: 크로스오버 이벤트 + 축제 + JRPG
