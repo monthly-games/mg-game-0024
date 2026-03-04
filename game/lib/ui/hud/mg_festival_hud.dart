@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 import 'package:mg_common_game/core/ui/layout/mg_spacing.dart';
 import 'package:mg_common_game/core/ui/typography/mg_text_styles.dart';
-import 'package:mg_common_game/core/ui/widgets/buttons/mg_icon_button.dart';
-import 'package:mg_common_game/core/ui/widgets/progress/mg_linear_progress.dart';
-import 'package:mg_common_game/core/ui/widgets/indicators/mg_resource_bar.dart';
+import 'package:mg_common_game/core/ui/widgets/buttons/mg_button.dart';
+import 'package:mg_common_game/core/ui/widgets/progress/mg_progress.dart';
+import 'package:mg_common_game/core/ui/widgets/hud/resource_bar.dart';
 
 /// MG-0024 Legend Festival Raid HUD
 /// 페스티벌 레이드 게임용 HUD - 팀 정보, 보스 HP, 점수, 시즌 정보 표시
@@ -53,17 +53,17 @@ class MGFestivalHud extends StatelessWidget {
                 if (seasonName != null) _buildSeasonInfo(),
                 const Spacer(),
                 // 오른쪽: 자원 & 버튼
-                MGResourceBar(
+                ResourceBar(
                   resources: [
                     ResourceItem(
                       icon: Icons.monetization_on,
                       value: gold,
-                      color: MGColors.resourceGold,
+                      color: MGColors.gold,
                     ),
                     ResourceItem(
                       icon: Icons.diamond,
                       value: gems,
-                      color: MGColors.resourceGem,
+                      color: MGColors.gem,
                     ),
                     ResourceItem(
                       icon: Icons.celebration,
