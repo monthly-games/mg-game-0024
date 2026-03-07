@@ -107,8 +107,8 @@ class MGFestivalHud extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.pink.withOpacity(0.8),
-            Colors.purple.withOpacity(0.5),
+            Colors.pink.withValues(alpha: 0.8),
+            Colors.purple.withValues(alpha: 0.5),
           ],
         ),
         borderRadius: BorderRadius.circular(MGSpacing.sm),
@@ -153,7 +153,7 @@ class MGFestivalHud extends StatelessWidget {
           vertical: MGSpacing.xs,
         ),
         decoration: BoxDecoration(
-          color: MGColors.surface.withOpacity(0.7),
+          color: MGColors.surface.withValues(alpha: 0.7),
           borderRadius: BorderRadius.circular(MGSpacing.xs),
           border: Border.all(color: MGColors.border),
         ),
@@ -192,12 +192,12 @@ class MGFestivalHud extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(MGSpacing.sm),
       decoration: BoxDecoration(
-        color: MGColors.surface.withOpacity(0.9),
+        color: MGColors.surface.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(MGSpacing.sm),
-        border: Border.all(color: Colors.red.withOpacity(0.5)),
+        border: Border.all(color: Colors.red.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.red.withOpacity(0.2),
+            color: Colors.red.withValues(alpha: 0.2),
             blurRadius: 12,
           ),
         ],
@@ -225,7 +225,7 @@ class MGFestivalHud extends StatelessWidget {
           MGLinearProgress(
             value: hpRatio,
             height: 20,
-            backgroundColor: Colors.red.withOpacity(0.2),
+            backgroundColor: Colors.red.withValues(alpha: 0.2),
             progressColor: Colors.red,
           ),
           const SizedBox(height: MGSpacing.xs),
@@ -253,8 +253,8 @@ class MGFestivalHud extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: isLowTime
-            ? Colors.red.withOpacity(0.8)
-            : Colors.orange.withOpacity(0.8),
+            ? Colors.red.withValues(alpha: 0.8)
+            : Colors.orange.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(MGSpacing.sm),
         border: Border.all(
           color: isLowTime ? Colors.redAccent : Colors.orangeAccent,
