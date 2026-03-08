@@ -117,7 +117,7 @@ class MGFestivalHud extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.celebration, color: Colors.white, size: 18),
+          const Icon(Icons.celebration, color: MGColors.textHighEmphasis, size: 18),
           const SizedBox(width: MGSpacing.xs),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +126,7 @@ class MGFestivalHud extends StatelessWidget {
               Text(
                 seasonName!,
                 style: MGTextStyles.buttonSmall.copyWith(
-                  color: Colors.white,
+                  color: MGColors.textHighEmphasis,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -194,10 +194,10 @@ class MGFestivalHud extends StatelessWidget {
       decoration: BoxDecoration(
         color: MGColors.surface.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(MGSpacing.sm),
-        border: Border.all(color: Colors.red.withValues(alpha: 0.5)),
+        border: Border.all(color: MGColors.error.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.red.withValues(alpha: 0.2),
+            color: MGColors.error.withValues(alpha: 0.2),
             blurRadius: 12,
           ),
         ],
@@ -209,12 +209,12 @@ class MGFestivalHud extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.whatshot, color: Colors.red, size: 20),
+              const Icon(Icons.whatshot, color: MGColors.error, size: 20),
               const SizedBox(width: MGSpacing.xs),
               Text(
                 bossName,
                 style: MGTextStyles.h3.copyWith(
-                  color: Colors.red,
+                  color: MGColors.error,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -225,15 +225,15 @@ class MGFestivalHud extends StatelessWidget {
           MGLinearProgress(
             value: hpRatio,
             height: 20,
-            backgroundColor: Colors.red.withValues(alpha: 0.2),
-            progressColor: Colors.red,
+            backgroundColor: MGColors.error.withValues(alpha: 0.2),
+            progressColor: MGColors.error,
           ),
           const SizedBox(height: MGSpacing.xs),
           // HP 수치
           Text(
             '${_formatNumber(bossHp)} / ${_formatNumber(bossMaxHp)}',
             style: MGTextStyles.buttonMedium.copyWith(
-              color: Colors.white,
+              color: MGColors.textHighEmphasis,
             ),
           ),
         ],
@@ -253,8 +253,8 @@ class MGFestivalHud extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: isLowTime
-            ? Colors.red.withValues(alpha: 0.8)
-            : Colors.orange.withValues(alpha: 0.8),
+            ? MGColors.error.withValues(alpha: 0.8)
+            : MGColors.warning.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(MGSpacing.sm),
         border: Border.all(
           color: isLowTime ? Colors.redAccent : Colors.orangeAccent,
@@ -265,14 +265,14 @@ class MGFestivalHud extends StatelessWidget {
         children: [
           const Icon(
             Icons.timer,
-            color: Colors.white,
+            color: MGColors.textHighEmphasis,
             size: 18,
           ),
           const SizedBox(width: MGSpacing.xs),
           Text(
             '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
             style: MGTextStyles.h3.copyWith(
-              color: Colors.white,
+              color: MGColors.textHighEmphasis,
               fontWeight: FontWeight.bold,
               fontFamily: 'monospace',
             ),

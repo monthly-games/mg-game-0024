@@ -13,6 +13,7 @@ import 'game/character_manager.dart';
 import 'game/crossover_manager.dart';
 import 'game/collection_manager.dart';
 import 'screens/hub_screen.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 // ═══════════════════════════════════════════════════════════════════════
 // Crossover Hub — MG-0024 (Legend Festival)
@@ -25,7 +26,7 @@ import 'screens/hub_screen.dart';
 // ═══════════════════════════════════════════════════════════════════════
 
 /// LATAM region accent color (Crimson Red #DC143C).
-const Color _kLatamRed = Color(0xFFDC143C);
+const Color _kLatamRed = MGColors.error;
 
 /// Dark background for festival theme.
 const Color _kFestivalBg = Color(0xFF1A0A1E);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/team/team_manager.dart';
 import '../core/models.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
@@ -113,14 +114,14 @@ class _HeroSlot extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.blueAccent,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.white, width: 2),
+              border: Border.all(color: MGColors.textHighEmphasis, width: 2),
             ),
-            child: const Icon(Icons.person, color: Colors.white),
+            child: const Icon(Icons.person, color: MGColors.textHighEmphasis),
           ),
           const SizedBox(height: 4),
           Text(
             hero.name,
-            style: const TextStyle(color: Colors.white, fontSize: 10),
+            style: const TextStyle(color: MGColors.textHighEmphasis, fontSize: 10),
             overflow: TextOverflow.ellipsis,
           ),
         ],
@@ -177,7 +178,7 @@ class _RosterCard extends StatelessWidget {
                   hero.name,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: MGColors.textHighEmphasis,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/social/social_manager.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 class GuildScreen extends StatefulWidget {
   const GuildScreen({super.key});
@@ -102,8 +103,8 @@ class _GuildScreenState extends State<GuildScreen> {
                   title: Text(member.name),
                   subtitle: Text(member.role),
                   trailing: member.isOnline
-                      ? const Icon(Icons.circle, color: Colors.green, size: 12)
-                      : const Icon(Icons.circle, color: Colors.grey, size: 12),
+                      ? const Icon(Icons.circle, color: MGColors.success, size: 12)
+                      : const Icon(Icons.circle, color: MGColors.common, size: 12),
                 );
               },
             ),
@@ -112,10 +113,10 @@ class _GuildScreenState extends State<GuildScreen> {
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: () => manager.leaveGuild(),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              style: ElevatedButton.styleFrom(backgroundColor: MGColors.error),
               child: const Text(
                 'Leave Guild',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: MGColors.textHighEmphasis),
               ),
             ),
           ),

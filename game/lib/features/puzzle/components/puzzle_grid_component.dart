@@ -3,6 +3,7 @@ import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
 import 'package:mg_common_game/features/puzzle/logic/grid_manager.dart';
 import 'package:mg_common_game/features/puzzle/logic/match_solver.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 class PuzzleGridComponent extends PositionComponent with TapCallbacks {
   final GridManager gridManager;
@@ -32,7 +33,7 @@ class PuzzleGridComponent extends PositionComponent with TapCallbacks {
     final paint = Paint()..style = PaintingStyle.fill;
     final borderPaint = Paint()
       ..style = PaintingStyle.stroke
-      ..color = Colors.white.withAlpha(128)
+      ..color = MGColors.textHighEmphasis.withAlpha(128)
       ..strokeWidth = 2.0;
 
     for (int y = 0; y < gridManager.height; y++) {
@@ -73,17 +74,17 @@ class PuzzleGridComponent extends PositionComponent with TapCallbacks {
   Color _getColorForType(String type) {
     switch (type) {
       case 'R':
-        return Colors.red;
+        return MGColors.error;
       case 'G':
-        return Colors.green;
+        return MGColors.success;
       case 'B':
-        return Colors.blue;
+        return MGColors.info;
       case 'Y':
         return Colors.yellow;
       case 'P':
         return Colors.purple;
       default:
-        return Colors.white;
+        return MGColors.textHighEmphasis;
     }
   }
 

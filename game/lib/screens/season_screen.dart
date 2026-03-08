@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/meta/season_manager.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 class SeasonScreen extends StatelessWidget {
   const SeasonScreen({super.key});
@@ -25,7 +26,7 @@ class SeasonScreen extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: MGColors.textHighEmphasis,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -54,7 +55,7 @@ class SeasonScreen extends StatelessWidget {
 
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: isUnlocked ? Colors.green : Colors.grey,
+                    backgroundColor: isUnlocked ? MGColors.success : MGColors.common,
                     child: Text('${reward.level}'),
                   ),
                   title: Text(reward.description),
@@ -62,7 +63,7 @@ class SeasonScreen extends StatelessWidget {
                     'Coins: ${reward.coins} | Tokens: ${reward.tokens}',
                   ),
                   trailing: reward.isClaimed
-                      ? const Icon(Icons.check, color: Colors.green)
+                      ? const Icon(Icons.check, color: MGColors.success)
                       : ElevatedButton(
                           onPressed: isUnlocked
                               ? () {

@@ -5,6 +5,7 @@ import 'package:flame/game.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
 import '../raid_manager.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 class RaidGame extends FlameGame with TapDetector {
   final RaidManager raidManager;
@@ -33,7 +34,7 @@ class RaidGame extends FlameGame with TapDetector {
     _damageText = TextComponent(
       text: '',
       textRenderer: TextPaint(
-        style: const TextStyle(color: Colors.white, fontSize: 24),
+        style: const TextStyle(color: MGColors.textHighEmphasis, fontSize: 24),
       ),
       position: Vector2(size.x / 2, size.y / 2 - 150),
       anchor: Anchor.center,

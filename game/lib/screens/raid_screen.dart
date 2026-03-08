@@ -6,6 +6,7 @@ import '../features/meta/economy_manager.dart';
 import '../features/meta/season_manager.dart';
 import '../features/raid/game/raid_game.dart';
 import '../features/raid/raid_manager.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 class RaidScreen extends StatefulWidget {
   const RaidScreen({super.key});
@@ -71,7 +72,7 @@ class _RaidScreenState extends State<RaidScreen> {
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
+                      backgroundColor: MGColors.common,
                     ),
                     child: const Text('RETREAT'),
                   ),
@@ -105,7 +106,7 @@ class _BossHealthBar extends StatelessWidget {
           Text(
             boss.name,
             style: const TextStyle(
-              color: Colors.white,
+              color: MGColors.textHighEmphasis,
               fontSize: 20,
               fontWeight: FontWeight.bold,
               shadows: [Shadow(blurRadius: 4, color: Colors.black)],
@@ -116,12 +117,12 @@ class _BossHealthBar extends StatelessWidget {
             value: percentage,
             minHeight: 20,
             backgroundColor: Colors.black54,
-            color: Colors.red,
+            color: MGColors.error,
           ),
           const SizedBox(height: 4),
           Text(
             '${boss.currentHp.toInt()} / ${boss.maxHp.toInt()}',
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: MGColors.textHighEmphasis),
           ),
         ],
       ),

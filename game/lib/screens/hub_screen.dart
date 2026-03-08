@@ -5,6 +5,7 @@ import 'shop_screen.dart';
 import 'season_screen.dart';
 import 'guild_screen.dart';
 import 'leaderboard_screen.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
 class HubScreen extends StatelessWidget {
   const HubScreen({super.key});
@@ -37,7 +38,7 @@ class HubScreen extends StatelessWidget {
               ),
               child: const Text(
                 'ENTER RAID',
-                style: TextStyle(fontSize: 18, color: Colors.white),
+                style: TextStyle(fontSize: 18, color: MGColors.textHighEmphasis),
               ),
             ),
             const SizedBox(height: 16),
