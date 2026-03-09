@@ -21,7 +21,6 @@ class MGFestivalHud extends StatelessWidget {
   final String? seasonName;
   final VoidCallback? onPause;
   final VoidCallback? onTeam;
-  final VoidCallback? onDailyHub;
 
   const MGFestivalHud({
     super.key,
@@ -37,7 +36,6 @@ class MGFestivalHud extends StatelessWidget {
     this.seasonName,
     this.onPause,
     this.onTeam,
-    this.onDailyHub,
   });
 
   @override
@@ -75,13 +73,6 @@ class MGFestivalHud extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: MGSpacing.sm),
-                if (onDailyHub != null)
-                  MGIconButton(
-                    icon: Icons.calendar_today,
-                    onPressed: onDailyHub!,
-                    buttonSize: MGIconButtonSize.small,
-                  ),
-                const SizedBox(width: MGSpacing.xs),
                 if (onPause != null)
                   MGIconButton(
                     icon: Icons.pause,
