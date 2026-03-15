@@ -14,7 +14,7 @@ class LeaderboardScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Rankings')),
       body: ListView.separated(
         itemCount: entries.length,
-        separatorBuilder: (_, _) => const Divider(),
+        separatorBuilder: (_, __) => const Divider(),
         itemBuilder: (context, index) {
           final entry = entries[index];
           return ListTile(
