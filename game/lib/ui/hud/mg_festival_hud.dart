@@ -4,7 +4,6 @@ import 'package:mg_common_game/core/ui/layout/mg_spacing.dart';
 import 'package:mg_common_game/core/ui/typography/mg_text_styles.dart';
 import 'package:mg_common_game/core/ui/widgets/buttons/mg_button.dart';
 import 'package:mg_common_game/core/ui/widgets/progress/mg_progress.dart';
-import 'package:mg_common_game/core/ui/widgets/hud/resource_bar.dart';
 
 /// MG-0024 Legend Festival Raid HUD
 /// 페스티벌 레이드 게임용 HUD - 팀 정보, 보스 HP, 점수, 시즌 정보 표시
@@ -61,22 +60,25 @@ class MGFestivalHud extends StatelessWidget {
                 if (seasonName != null) _buildSeasonInfo(),
                 const Spacer(),
                 // 오른쪽: 자원 & 버튼
-                ResourceBar(
-                  resources: [
-                    ResourceItem(
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    MGResourceBar(
                       icon: Icons.monetization_on,
-                      value: gold,
-                      color: MGColors.gold,
+                      value: '$gold',
+                      iconColor: MGColors.gold,
                     ),
-                    ResourceItem(
+                    const SizedBox(width: MGSpacing.xs),
+                    MGResourceBar(
                       icon: Icons.diamond,
-                      value: gems,
-                      color: MGColors.gem,
+                      value: '$gems',
+                      iconColor: MGColors.gem,
                     ),
-                    ResourceItem(
+                    const SizedBox(width: MGSpacing.xs),
+                    MGResourceBar(
                       icon: Icons.celebration,
-                      value: festivalPoints,
-                      color: Colors.pinkAccent,
+                      value: '$festivalPoints',
+                      iconColor: Colors.pinkAccent,
                     ),
                   ],
                 ),
@@ -113,7 +115,7 @@ class MGFestivalHud extends StatelessWidget {
                   MGIconButton(
                     icon: Icons.pause,
                     onPressed: onPause!,
-                    size: MGIconButtonSize.small,
+                    buttonSize: MGIconButtonSize.small,
                   ),
               ],
             ),
@@ -262,7 +264,7 @@ class MGFestivalHud extends StatelessWidget {
             value: hpRatio,
             height: 20,
             backgroundColor: MGColors.error.withValues(alpha: 0.2),
-            progressColor: MGColors.error,
+            valueColor: MGColors.error,
           ),
           const SizedBox(height: MGSpacing.xs),
           // HP 수치

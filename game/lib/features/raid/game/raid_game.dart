@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/events.dart';
@@ -7,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../raid_manager.dart';
 import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 
-class RaidGame extends FlameGame with TapDetector {
+class RaidGame extends FlameGame with TapCallbacks {
   final RaidManager raidManager;
   late SpriteComponent _boss;
   late SpriteComponent _background;

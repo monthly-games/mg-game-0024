@@ -136,6 +136,9 @@ class HubScreen extends StatelessWidget {
                 ),
               ],
             ),
+          ],
+        ),
+      ),
     );
   }
 }

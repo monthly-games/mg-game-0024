@@ -2,7 +2,7 @@
 library;
 
 import 'package:flutter/foundation.dart';
-import 'package:mg_common_game/systems/gacha/gacha_config.dart';
+import 'package:mg_common_game/systems/gacha/gacha_pool.dart';
 import 'package:mg_common_game/systems/gacha/gacha_manager.dart';
 
 /// 게임 내 Performer 모델
@@ -42,7 +42,7 @@ class PerformerGachaAdapter extends ChangeNotifier {
   void _initPool() {
     final pool = GachaPool(
       id: _poolId,
-      name: 'Festival Event 가챠',
+      nameKr: 'Festival Event 가챠',
       items: _generateItems(),
       startDate: DateTime.now().subtract(const Duration(days: 1)),
       endDate: DateTime.now().add(const Duration(days: 365)),
@@ -53,30 +53,30 @@ class PerformerGachaAdapter extends ChangeNotifier {
   List<GachaItem> _generateItems() {
     return [
       // UR (0.6%)
-      GachaItem(id: 'ur_festival_001', name: '전설의 Performer', rarity: GachaRarity.ultraRare, weight: 1.0),
-      GachaItem(id: 'ur_festival_002', name: '신화의 Performer', rarity: GachaRarity.ultraRare, weight: 1.0),
+      const GachaItem(id: 'ur_festival_001', nameKr: '전설의 Performer', rarity: GachaRarity.ultraRare),
+      const GachaItem(id: 'ur_festival_002', nameKr: '신화의 Performer', rarity: GachaRarity.ultraRare),
       // SSR (2.4%)
-      GachaItem(id: 'ssr_festival_001', name: '영웅의 Performer', rarity: GachaRarity.superSuperRare, weight: 1.0),
-      GachaItem(id: 'ssr_festival_002', name: '고대의 Performer', rarity: GachaRarity.superSuperRare, weight: 1.0),
-      GachaItem(id: 'ssr_festival_003', name: '황금의 Performer', rarity: GachaRarity.superSuperRare, weight: 1.0),
+      const GachaItem(id: 'ssr_festival_001', nameKr: '영웅의 Performer', rarity: GachaRarity.superRare),
+      const GachaItem(id: 'ssr_festival_002', nameKr: '고대의 Performer', rarity: GachaRarity.superRare),
+      const GachaItem(id: 'ssr_festival_003', nameKr: '황금의 Performer', rarity: GachaRarity.superRare),
       // SR (12%)
-      GachaItem(id: 'sr_festival_001', name: '희귀한 Performer A', rarity: GachaRarity.superRare, weight: 1.0),
-      GachaItem(id: 'sr_festival_002', name: '희귀한 Performer B', rarity: GachaRarity.superRare, weight: 1.0),
-      GachaItem(id: 'sr_festival_003', name: '희귀한 Performer C', rarity: GachaRarity.superRare, weight: 1.0),
-      GachaItem(id: 'sr_festival_004', name: '희귀한 Performer D', rarity: GachaRarity.superRare, weight: 1.0),
+      const GachaItem(id: 'sr_festival_001', nameKr: '희귀한 Performer A', rarity: GachaRarity.superRare),
+      const GachaItem(id: 'sr_festival_002', nameKr: '희귀한 Performer B', rarity: GachaRarity.superRare),
+      const GachaItem(id: 'sr_festival_003', nameKr: '희귀한 Performer C', rarity: GachaRarity.superRare),
+      const GachaItem(id: 'sr_festival_004', nameKr: '희귀한 Performer D', rarity: GachaRarity.superRare),
       // R (35%)
-      GachaItem(id: 'r_festival_001', name: '우수한 Performer A', rarity: GachaRarity.rare, weight: 1.0),
-      GachaItem(id: 'r_festival_002', name: '우수한 Performer B', rarity: GachaRarity.rare, weight: 1.0),
-      GachaItem(id: 'r_festival_003', name: '우수한 Performer C', rarity: GachaRarity.rare, weight: 1.0),
-      GachaItem(id: 'r_festival_004', name: '우수한 Performer D', rarity: GachaRarity.rare, weight: 1.0),
-      GachaItem(id: 'r_festival_005', name: '우수한 Performer E', rarity: GachaRarity.rare, weight: 1.0),
+      const GachaItem(id: 'r_festival_001', nameKr: '우수한 Performer A', rarity: GachaRarity.rare),
+      const GachaItem(id: 'r_festival_002', nameKr: '우수한 Performer B', rarity: GachaRarity.rare),
+      const GachaItem(id: 'r_festival_003', nameKr: '우수한 Performer C', rarity: GachaRarity.rare),
+      const GachaItem(id: 'r_festival_004', nameKr: '우수한 Performer D', rarity: GachaRarity.rare),
+      const GachaItem(id: 'r_festival_005', nameKr: '우수한 Performer E', rarity: GachaRarity.rare),
       // N (50%)
-      GachaItem(id: 'n_festival_001', name: '일반 Performer A', rarity: GachaRarity.normal, weight: 1.0),
-      GachaItem(id: 'n_festival_002', name: '일반 Performer B', rarity: GachaRarity.normal, weight: 1.0),
-      GachaItem(id: 'n_festival_003', name: '일반 Performer C', rarity: GachaRarity.normal, weight: 1.0),
-      GachaItem(id: 'n_festival_004', name: '일반 Performer D', rarity: GachaRarity.normal, weight: 1.0),
-      GachaItem(id: 'n_festival_005', name: '일반 Performer E', rarity: GachaRarity.normal, weight: 1.0),
-      GachaItem(id: 'n_festival_006', name: '일반 Performer F', rarity: GachaRarity.normal, weight: 1.0),
+      const GachaItem(id: 'n_festival_001', nameKr: '일반 Performer A', rarity: GachaRarity.normal),
+      const GachaItem(id: 'n_festival_002', nameKr: '일반 Performer B', rarity: GachaRarity.normal),
+      const GachaItem(id: 'n_festival_003', nameKr: '일반 Performer C', rarity: GachaRarity.normal),
+      const GachaItem(id: 'n_festival_004', nameKr: '일반 Performer D', rarity: GachaRarity.normal),
+      const GachaItem(id: 'n_festival_005', nameKr: '일반 Performer E', rarity: GachaRarity.normal),
+      const GachaItem(id: 'n_festival_006', nameKr: '일반 Performer F', rarity: GachaRarity.normal),
     ];
   }
 
@@ -98,7 +98,7 @@ class PerformerGachaAdapter extends ChangeNotifier {
   Performer _convertToItem(GachaItem item) {
     return Performer(
       id: item.id,
-      name: item.name,
+      name: item.nameKr,
       rarity: item.rarity,
     );
   }

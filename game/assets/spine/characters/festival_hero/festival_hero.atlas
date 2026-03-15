@@ -1,0 +1,195 @@
+arm_L.png
+size: 213,93
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_L
+  rotate: false
+  xy: 0, 0
+  size: 213, 93
+  orig: 213, 93
+  offset: 0, 0
+  index: -1
+
+arm_L_lower.png
+size: 213,93
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_L_lower
+  rotate: false
+  xy: 0, 0
+  size: 213, 93
+  orig: 213, 93
+  offset: 0, 0
+  index: -1
+
+arm_L_upper.png
+size: 213,93
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_L_upper
+  rotate: false
+  xy: 0, 0
+  size: 213, 93
+  orig: 213, 93
+  offset: 0, 0
+  index: -1
+
+arm_R.png
+size: 271,95
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_R
+  rotate: false
+  xy: 0, 0
+  size: 271, 95
+  orig: 271, 95
+  offset: 0, 0
+  index: -1
+
+arm_R_lower.png
+size: 271,95
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_R_lower
+  rotate: false
+  xy: 0, 0
+  size: 271, 95
+  orig: 271, 95
+  offset: 0, 0
+  index: -1
+
+arm_R_upper.png
+size: 271,95
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_R_upper
+  rotate: false
+  xy: 0, 0
+  size: 271, 95
+  orig: 271, 95
+  offset: 0, 0
+  index: -1
+
+body.png
+size: 847,854
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 0, 0
+  size: 847, 854
+  orig: 847, 854
+  offset: 0, 0
+  index: -1
+
+head.png
+size: 136,153
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+head
+  rotate: false
+  xy: 0, 0
+  size: 136, 153
+  orig: 136, 153
+  offset: 0, 0
+  index: -1
+
+leg_L.png
+size: 111,374
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leg_L
+  rotate: false
+  xy: 0, 0
+  size: 111, 374
+  orig: 111, 374
+  offset: 0, 0
+  index: -1
+
+leg_L_lower.png
+size: 111,374
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leg_L_lower
+  rotate: false
+  xy: 0, 0
+  size: 111, 374
+  orig: 111, 374
+  offset: 0, 0
+  index: -1
+
+leg_L_upper.png
+size: 111,374
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leg_L_upper
+  rotate: false
+  xy: 0, 0
+  size: 111, 374
+  orig: 111, 374
+  offset: 0, 0
+  index: -1
+
+leg_R.png
+size: 91,342
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leg_R
+  rotate: false
+  xy: 0, 0
+  size: 91, 342
+  orig: 91, 342
+  offset: 0, 0
+  index: -1
+
+leg_R_lower.png
+size: 91,342
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leg_R_lower
+  rotate: false
+  xy: 0, 0
+  size: 91, 342
+  orig: 91, 342
+  offset: 0, 0
+  index: -1
+
+leg_R_upper.png
+size: 91,342
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leg_R_upper
+  rotate: false
+  xy: 0, 0
+  size: 91, 342
+  orig: 91, 342
+  offset: 0, 0
+  index: -1
+
+weapon.png
+size: 379,147
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+weapon
+  rotate: false
+  xy: 0, 0
+  size: 379, 147
+  orig: 379, 147
+  offset: 0, 0
+  index: -1
+

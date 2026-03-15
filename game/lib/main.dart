@@ -1,20 +1,8 @@
+import 'package:mg_common_game/mg_common_game.dart' hide CollectionManager, SocialManager;
 import 'package:flutter/material.dart';
-import 'package:mg_common_game/core/ui/screens/seasonal_event_screen.dart';
-import 'package:mg_common_game/core/ui/screens/tournament_screen.dart';
-import 'package:mg_common_game/core/ui/screens/guild_war_screen.dart';
-import 'package:mg_common_game/systems/events/seasonal_content_manager.dart';
-import 'package:mg_common_game/systems/competitive/tournament_manager.dart';
-import 'package:mg_common_game/systems/social/guild_war_manager.dart';
-import 'package:mg_common_game/core/ui/screens/daily_hub_screen.dart';
-import 'package:mg_common_game/systems/retention/daily_challenge_manager.dart';
-import 'package:mg_common_game/systems/retention/streak_manager.dart';
-import 'package:mg_common_game/systems/retention/login_rewards_manager.dart';
 import 'package:mg_common_game/systems/systems.dart' as mg_systems;
-import 'package:mg_common_game/systems/progression/achievement_manager.dart';
-import 'package:mg_common_game/systems/quests/daily_quest.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'package:mg_common_game/systems/progression/upgrade_manager.dart';
 import 'features/meta/economy_manager.dart';
 import 'features/meta/season_manager.dart';
 import 'features/social/social_manager.dart';
@@ -24,7 +12,6 @@ import 'game/character_manager.dart';
 import 'game/crossover_manager.dart';
 import 'game/collection_manager.dart';
 import 'screens/hub_screen.dart';
-import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
 import 'screens/collection_screen.dart';
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -146,45 +133,45 @@ void _registerCollections() {
     name: '캐릭터',
     description: '모든 캐릭터를 수집하세요',
     items: [
-      mg_systems.CollectionItem(
+      const mg_systems.CollectionItem(
         id: 'char_warrior',
         name: '전사',
         description: '강인한 근접 전투 캐릭터',
         rarity: mg_systems.CollectionRarity.common,
       ),
-      mg_systems.CollectionItem(
+      const mg_systems.CollectionItem(
         id: 'char_mage',
         name: '마법사',
         description: '강력한 마법 공격 캐릭터',
         rarity: mg_systems.CollectionRarity.rare,
       ),
-      mg_systems.CollectionItem(
+      const mg_systems.CollectionItem(
         id: 'char_archer',
         name: '궁수',
         description: '원거리 정밀 공격 캐릭터',
         rarity: mg_systems.CollectionRarity.rare,
       ),
-      mg_systems.CollectionItem(
+      const mg_systems.CollectionItem(
         id: 'char_assassin',
         name: '암살자',
         description: '치명적인 은신 공격 캐릭터',
         rarity: mg_systems.CollectionRarity.epic,
       ),
-      mg_systems.CollectionItem(
+      const mg_systems.CollectionItem(
         id: 'char_healer',
         name: '힐러',
         description: '팀을 치유하는 지원 캐릭터',
         rarity: mg_systems.CollectionRarity.legendary,
       ),
     ],
-    completionReward: mg_systems.CollectionReward(
+    completionReward: const mg_systems.CollectionReward(
       type: mg_systems.RewardType.gold,
       amount: 10000,
     ),
     milestoneRewards: {
-      25: mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 1000),
-      50: mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 3000),
-      75: mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 5000),
+      25: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 1000),
+      50: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 3000),
+      75: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 5000),
     },
   ));
 

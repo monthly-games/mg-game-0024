@@ -14,7 +14,7 @@ const kFestivalHeroMeta = SpineAssetMeta(
   atlasPath:
       'assets/spine/characters/festival_hero/festival_hero.atlas',
   skeletonPath:
-      'assets/spine/characters/festival_hero/festival_hero.skel',
+      'assets/spine/characters/festival_hero/festival_hero.json',
   animations: ['idle', 'walk', 'attack', 'hit'],
   defaultAnimation: 'idle',
   defaultMix: 0.2,
@@ -28,7 +28,7 @@ const kFestivalDancerMeta = SpineAssetMeta(
   atlasPath:
       'assets/spine/characters/festival_dancer/festival_dancer.atlas',
   skeletonPath:
-      'assets/spine/characters/festival_dancer/festival_dancer.skel',
+      'assets/spine/characters/festival_dancer/festival_dancer.json',
   animations: ['idle', 'walk', 'attack', 'hit'],
   defaultAnimation: 'idle',
   defaultMix: 0.2,
@@ -42,7 +42,7 @@ const kFestivalBardMeta = SpineAssetMeta(
   atlasPath:
       'assets/spine/characters/festival_bard/festival_bard.atlas',
   skeletonPath:
-      'assets/spine/characters/festival_bard/festival_bard.skel',
+      'assets/spine/characters/festival_bard/festival_bard.json',
   animations: ['idle', 'walk', 'attack', 'hit'],
   defaultAnimation: 'idle',
   defaultMix: 0.2,
