@@ -1,8 +1,11 @@
+import 'package:mg_common_game/core/ui/layout/mg_spacing.dart';
+import 'package:mg_common_game/core/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/team/team_manager.dart';
 import '../core/models.dart';
-import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';import 'package:mg_common_game/l10n/localization.dart';
+
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
@@ -13,12 +16,12 @@ class TeamScreen extends StatelessWidget {
     final team = manager.activeTeam;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Manage Team')),
+      appBar: AppBar(title: Text('ui_general_manage_team'.tr)),
       body: Column(
         children: [
           // Active Team Section
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(MGSpacing.md),
             color: Colors.blueGrey.shade900,
             child: Column(
               children: [
@@ -40,7 +43,7 @@ class TeamScreen extends StatelessWidget {
                       ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: MGSpacing.md),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: List.generate(4, (index) {
@@ -64,7 +67,7 @@ class TeamScreen extends StatelessWidget {
           // Roster Section
           Expanded(
             child: GridView.builder(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(MGSpacing.xs),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 0.8,
@@ -118,7 +121,7 @@ class _HeroSlot extends StatelessWidget {
             ),
             child: const Icon(Icons.person, color: MGColors.textHighEmphasis),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: MGSpacing.xxs),
           Text(
             hero.name,
             style: const TextStyle(color: MGColors.textHighEmphasis, fontSize: 10),
@@ -168,12 +171,12 @@ class _RosterCard extends StatelessWidget {
         child: Card(
           color: Colors.grey.shade800,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(MGSpacing.xs),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(Icons.person, size: 32, color: Colors.white70),
-                const SizedBox(height: 8),
+                const SizedBox(height: MGSpacing.xs),
                 Text(
                   hero.name,
                   textAlign: TextAlign.center,
@@ -187,7 +190,7 @@ class _RosterCard extends StatelessWidget {
                   style: const TextStyle(color: Colors.white54, fontSize: 10),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: MGSpacing.xxs),
                 Text(
                   'pow: ${hero.power}',
                   style: const TextStyle(color: Colors.amber, fontSize: 12),

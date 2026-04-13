@@ -1,7 +1,10 @@
+import 'package:mg_common_game/core/ui/layout/mg_spacing.dart';
+import 'package:mg_common_game/core/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../features/social/social_manager.dart';
-import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';import 'package:mg_common_game/l10n/localization.dart';
+
 
 class GuildScreen extends StatefulWidget {
   const GuildScreen({super.key});
@@ -28,9 +31,9 @@ class _GuildScreenState extends State<GuildScreen> {
 
     if (guild == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Guild Center')),
+        appBar: AppBar(title: Text('ui_general_guild_center'.tr)),
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(MGSpacing.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -38,17 +41,17 @@ class _GuildScreenState extends State<GuildScreen> {
                 'Create a Guild',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: MGSpacing.md),
               TextField(
                 controller: _nameController,
                 decoration: const InputDecoration(labelText: 'Guild Name'),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: MGSpacing.xs),
               TextField(
                 controller: _descController,
                 decoration: const InputDecoration(labelText: 'Description'),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: MGSpacing.lg),
               ElevatedButton(
                 onPressed: () {
                   if (_nameController.text.isNotEmpty) {
@@ -58,10 +61,10 @@ class _GuildScreenState extends State<GuildScreen> {
                     );
                   }
                 },
-                child: const Text('Create Guild'),
+                child: Text('ui_general_create_guild'.tr),
               ),
               const Divider(height: 32),
-              const Center(child: Text('Join feature coming soon (Simulated)')),
+              Center(child: Text('ui_general_join_feature_coming_soon_simulated'.tr)),
             ],
           ),
         ),
@@ -73,7 +76,7 @@ class _GuildScreenState extends State<GuildScreen> {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(MGSpacing.md),
             color: Colors.indigo.shade900,
             width: double.infinity,
             child: Column(
@@ -110,7 +113,7 @@ class _GuildScreenState extends State<GuildScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(MGSpacing.md),
             child: ElevatedButton(
               onPressed: () => manager.leaveGuild(),
               style: ElevatedButton.styleFrom(backgroundColor: MGColors.error),

@@ -1,4 +1,4 @@
-import 'package:mg_common_game/core/assets/asset_types.dart';
+// import 'package:mg_common_game/core/assets/asset_types.dart'; // SpineAssetMeta not available
 
 /// Spine 통합 플래그. `--dart-define=SPINE_ENABLED=true`로 활성화.
 const kSpineEnabled = bool.fromEnvironment(
@@ -8,42 +8,42 @@ const kSpineEnabled = bool.fromEnvironment(
 
 // ── Festival Hero ────────────────────────────────────────────
 
-const kFestivalHeroMeta = SpineAssetMeta(
-  key: 'festival_hero',
-  path: 'spine/characters/festival_hero',
-  atlasPath:
-      'assets/spine/characters/festival_hero/festival_hero.atlas',
-  skeletonPath:
-      'assets/spine/characters/festival_hero/festival_hero.json',
-  animations: ['idle', 'walk', 'attack', 'hit'],
-  defaultAnimation: 'idle',
-  defaultMix: 0.2,
-);
+// const kFestivalHeroMeta = SpineAssetMeta(
+//   key: 'festival_hero',
+//   path: 'spine/characters/festival_hero',
+//   atlasPath:
+//       'assets/spine/characters/festival_hero/festival_hero.atlas',
+//   skeletonPath:
+//       'assets/spine/characters/festival_hero/festival_hero.json',
+//   animations: ['idle', 'walk', 'attack', 'hit'],
+//   defaultAnimation: 'idle',
+//   defaultMix: 0.2,
+// );
 
 // ── Festival Dancer ──────────────────────────────────────────
 
-const kFestivalDancerMeta = SpineAssetMeta(
-  key: 'festival_dancer',
-  path: 'spine/characters/festival_dancer',
-  atlasPath:
-      'assets/spine/characters/festival_dancer/festival_dancer.atlas',
-  skeletonPath:
-      'assets/spine/characters/festival_dancer/festival_dancer.json',
-  animations: ['idle', 'walk', 'attack', 'hit'],
-  defaultAnimation: 'idle',
-  defaultMix: 0.2,
-);
+// const kFestivalDancerMeta = SpineAssetMeta(
+//   key: 'festival_dancer',
+//   path: 'spine/characters/festival_dancer',
+//   atlasPath:
+//       'assets/spine/characters/festival_dancer/festival_dancer.atlas',
+//   skeletonPath:
+//       'assets/spine/characters/festival_dancer/festival_dancer.json',
+//   animations: ['idle', 'walk', 'attack', 'hit'],
+//   defaultAnimation: 'idle',
+//   defaultMix: 0.2,
+// );
 
 // ── Festival Bard ────────────────────────────────────────────
 
-const kFestivalBardMeta = SpineAssetMeta(
-  key: 'festival_bard',
-  path: 'spine/characters/festival_bard',
-  atlasPath:
-      'assets/spine/characters/festival_bard/festival_bard.atlas',
-  skeletonPath:
-      'assets/spine/characters/festival_bard/festival_bard.json',
-  animations: ['idle', 'walk', 'attack', 'hit'],
-  defaultAnimation: 'idle',
-  defaultMix: 0.2,
-);
+// const kFestivalBardMeta = SpineAssetMeta(
+//   key: 'festival_bard',
+//   path: 'spine/characters/festival_bard',
+//   atlasPath:
+//       'assets/spine/characters/festival_bard/festival_bard.atlas',
+//   skeletonPath:
+//       'assets/spine/characters/festival_bard/festival_bard.json',
+//   animations: ['idle', 'walk', 'attack', 'hit'],
+//   defaultAnimation: 'idle',
+//   defaultMix: 0.2,
+// );

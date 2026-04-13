@@ -1,3 +1,5 @@
+import 'package:mg_common_game/core/ui/layout/mg_spacing.dart';
+import 'package:mg_common_game/core/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'raid_screen.dart';
 import 'team_screen.dart';
@@ -5,7 +7,8 @@ import 'shop_screen.dart';
 import 'season_screen.dart';
 import 'guild_screen.dart';
 import 'leaderboard_screen.dart';
-import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';import 'package:mg_common_game/l10n/localization.dart';
+
 
 class HubScreen extends StatelessWidget {
   const HubScreen({super.key});
@@ -13,7 +16,7 @@ class HubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Legend Festival Hub')),
+      appBar: AppBar(title: Text('ui_general_legend_festival_hub'.tr)),
       endDrawer: Drawer(
         child: SafeArea(
           child: ListView(
@@ -28,7 +31,7 @@ class HubScreen extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.shield),
-                title: const Text('Guild War'),
+                title: Text('ui_general_guild_war'.tr),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context)
@@ -46,7 +49,7 @@ class HubScreen extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.celebration),
-                title: const Text('Seasonal Event'),
+                title: Text('ui_general_seasonal_event'.tr),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context)
@@ -65,7 +68,7 @@ class HubScreen extends StatelessWidget {
               'Welcome, Commander!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: MGSpacing.xl),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(
@@ -84,32 +87,32 @@ class HubScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: MGColors.textHighEmphasis),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: MGSpacing.md),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(
                   context,
                 ).push(MaterialPageRoute(builder: (_) => const TeamScreen()));
               },
-              child: const Text('Manage Team'),
+              child: Text('ui_general_manage_team'.tr),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: MGSpacing.md),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const ShopScreen()),
                 );
               },
-              child: const Text('Festival Shop'),
+              child: Text('shop_festival_shop'.tr),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: MGSpacing.md),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const SeasonScreen()),
                 );
               },
-              child: const Text('Season Pass'),
+              child: Text('ui_general_season_pass'.tr),
             ),
             const Divider(height: 32),
             Row(
@@ -122,9 +125,9 @@ class HubScreen extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.shield),
-                  label: const Text('Guild'),
+                  label: Text('ui_general_guild_war'.tr),
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: MGSpacing.md),
                 ElevatedButton.icon(
                   onPressed: () {
                     Navigator.of(context).push(
@@ -132,7 +135,7 @@ class HubScreen extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.leaderboard),
-                  label: const Text('Rankings'),
+                  label: Text('progress_global_rankings'.tr),
                 ),
               ],
             ),

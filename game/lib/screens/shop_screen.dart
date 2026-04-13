@@ -1,6 +1,9 @@
+import 'package:mg_common_game/core/ui/layout/mg_spacing.dart';
+import 'package:mg_common_game/core/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../features/meta/economy_manager.dart';
+import '../features/meta/economy_manager.dart';import 'package:mg_common_game/l10n/localization.dart';
+
 
 class ShopScreen extends StatelessWidget {
   const ShopScreen({super.key});
@@ -11,7 +14,7 @@ class ShopScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Festival Shop'),
+        title: Text('shop_festival_shop'.tr),
         actions: [
           Center(
             child: Padding(
@@ -29,7 +32,7 @@ class ShopScreen extends StatelessWidget {
       ),
       body: GridView.count(
         crossAxisCount: 2,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(MGSpacing.md),
         children: [
           _ShopItem(
             name: 'Energy Potion',
@@ -38,11 +41,11 @@ class ShopScreen extends StatelessWidget {
             onBuy: () {
               if (context.read<EconomyManager>().spendCoins(100)) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Purchased Energy Potion!')),
+                  const SnackBar(content: Text('shop_purchased_energy_potion'.tr)),
                 );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Not enough coins!')),
+                  const SnackBar(content: Text('ui_general_not_enough_coins'.tr)),
                 );
               }
             },
@@ -54,11 +57,11 @@ class ShopScreen extends StatelessWidget {
             onBuy: () {
               if (context.read<EconomyManager>().spendCoins(500)) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Purchased Raid Ticket!')),
+                  const SnackBar(content: Text('shop_purchased_raid_ticket'.tr)),
                 );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Not enough coins!')),
+                  const SnackBar(content: Text('ui_general_not_enough_coins'.tr)),
                 );
               }
             },
@@ -91,12 +94,12 @@ class _ShopItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(icon, size: 48, color: Colors.blueAccent),
-            const SizedBox(height: 8),
+            const SizedBox(height: MGSpacing.xs),
             Text(
               name,
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: MGSpacing.xxs),
             Text('$cost Coins', style: const TextStyle(color: Colors.amber)),
           ],
         ),

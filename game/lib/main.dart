@@ -1,6 +1,11 @@
+import 'package:mg_common_game/systems/progression/achievement_manager.dart';
+
 import 'package:mg_common_game/mg_common_game.dart' hide CollectionManager, SocialManager;
+import 'package:mg_common_game/core/localization/localization.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:mg_common_game/systems/systems.dart' as mg_systems;
+import 'package:mg_common_game/core/ui/accessibility/accessibility_settings.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'features/meta/economy_manager.dart';
@@ -13,203 +18,340 @@ import 'game/crossover_manager.dart';
 import 'game/collection_manager.dart';
 import 'screens/hub_screen.dart';
 import 'screens/collection_screen.dart';
-import 'game/tutorial_config.dart';
-import 'game/balancing_config.dart';
-
+// // import 'game/tutorial_config.dart'; // TutorialManager not available
+// import 'game/balancing_config.dart'; // BalancingManager not available
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:mg_common_game/systems/quests/daily_quest_v2.dart';
+// import 'package:mg_common_game/core/ui/screens/daily_quest_screen_v2.dart';
+// import 'package:mg_common_game/l10n/localization.dart';
+import 'package:mg_common_game/l10n/extensions.dart';
+// import 'firebase_options.dart';
+// 
+// 
 // ═══════════════════════════════════════════════════════════════════════
-// Crossover Hub — MG-0024 (Legend Festival)
+// Crossover Hub -- MG-0024 (Legend Festival)
 // Genre: Puzzle / Crossover / Collection
 // Region: LATAM
-//
+// //
 // Core loop: Collect Heroes -> Build Crossover Teams -> Raid Bosses
 // Subsystems: Character power, Crossover bonuses, Collection,
 //             Team synergy, Economy, Seasons, Upgrades
 // ═══════════════════════════════════════════════════════════════════════
-
-/// LATAM region accent color (Crimson Red #DC143C).
-const Color _kLatamRed = MGColors.error;
-
-/// Dark background for festival theme.
-const Color _kFestivalBg = Color(0xFF1A0A1E);
-
-/// Card / AppBar surface color.
-const Color _kFestivalSurface = Color(0xFF2D1233);
-
+// 
+// /// LATAM region accent color (Crimson Red #DC143C).
+// const Color _kLatamRed = MGColors.error;
+// 
+// /// Dark background for festival theme.
+// const Color _kFestivalBg = Color(0xFF1A0A1E);
+// 
+// /// Card / AppBar surface color.
+// const Color _kFestivalSurface = Color(0xFF2D1233);
+// 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await _initializeSystems();
-  // DailyQuest 시스템
-  GetIt.I.registerSingleton(DailyQuestManager());
-  // Achievement 시스템
-  GetIt.I.registerSingleton(AchievementManager());
-  // ── P3 Engine Systems ─────────────────────────────────────
-  if (!GetIt.I.isRegistered<GuildWarManager>()) {
-    GetIt.I.registerSingleton(GuildWarManager());
-  }
-  if (!GetIt.I.isRegistered<TournamentManager>()) {
-    GetIt.I.registerSingleton(TournamentManager());
-  }
-  if (!GetIt.I.isRegistered<SeasonalContentManager>()) {
-    GetIt.I.registerSingleton(SeasonalContentManager());
-  }
-_registerAchievements();
-  _registerDailyQuests();
-  // ── Tutorial & Balancing ──────────────────────────────────
-  if (!GetIt.I.isRegistered<TutorialManager>()) {
-    final tutorialManager = TutorialManager();
-    await tutorialManager.initialize();
-    tutorialManager.registerTutorial(
-      kOnboardingTutorial.id,
-      kOnboardingTutorial.steps,
-    );
-    GetIt.I.registerSingleton<TutorialManager>(tutorialManager);
-  }
-  if (!GetIt.I.isRegistered<BalancingManager>()) {
-    GetIt.I.registerSingleton<BalancingManager>(
-      BalancingManager(defaultConfig: kDefaultBalancingConfig),
-    );
-  }
-  // ── Q7 DI Fix: Missing Systems ──────────────────────────
-  if (!GetIt.I.isRegistered<BattlePassManager>()) {
-    GetIt.I.registerSingleton<BattlePassManager>(BattlePassManager());
-  }
-  if (!GetIt.I.isRegistered<GachaManager>()) {
-    GetIt.I.registerSingleton<GachaManager>(GachaManager());
-  }
-  if (!GetIt.I.isRegistered<CollectionManager>()) {
-    GetIt.I.registerSingleton<CollectionManager>(CollectionManager());
-  }
-
-  runApp(const LegendFestivalApp());
+WidgetsFlutterBinding.ensureInitialized();
+// Initialize Firebase Remote Config
 }
+try {
+final remoteConfig = FirebaseRemoteConfig.instance;
+await remoteConfig.setDefaults({
+'feature_iap_enabled': true,
+'feature_new_ui_enabled': false,
+'feature_daily_rewards_enabled': true,
+'feature_tutorial_enabled': true,
+'min_app_version': '1.0.0',
 
-// ─── System Initialization ─────────────────────────────────────────────
-
+      'feature_battlepass': true,
+      'feature_gacha': true,});
+await remoteConfig.fetchAndActivate();
+print('Remote Config initialized successfully');
+} catch (e) {
+print('Failed to initialize Remote Config: $e');
+}
+await _initializeSystems();
+// DailyQuest 시스템
+// Daily Quest V2 - 7 Quest System with Streak Bonuses
+if (!GetIt.I.isRegistered<DailyQuestManagerV2>()) {
+final questManager = DailyQuestManagerV2();
+// Slot 0: Login Quest
+questManager.registerQuest(
+DailyQuestV2(
+id: 'quest_slot_0',
+title: 'Daily Login',
+description: 'Word of the day!',
+type: QuestType.login,
+tier: QuestTier.easy,
+targetValue: 1,
+baseGoldReward: 50,
+baseXpReward: 20,
+),
+slotIndex: 0,
+);
+// Slot 1: Play Quest
+questManager.registerQuest(
+DailyQuestV2(
+id: 'quest_slot_1',
+title: 'Word Smith',
+description: 'Complete 5 puzzles',
+type: QuestType.play,
+tier: QuestTier.easy,
+targetValue: 5,
+baseGoldReward: 100,
+baseXpReward: 40,
+),
+slotIndex: 1,
+);
+// Slot 2: Win Quest
+questManager.registerQuest(
+DailyQuestV2(
+id: 'quest_slot_2',
+title: 'Vocabulary Master',
+description: 'Find 50 words',
+type: QuestType.win,
+tier: QuestTier.medium,
+targetValue: 50,
+baseGoldReward: 150,
+baseXpReward: 60,
+),
+slotIndex: 2,
+);
+// Slot 3: Upgrade Quest
+questManager.registerQuest(
+DailyQuestV2(
+id: 'quest_slot_3',
+title: 'Hint User',
+description: 'Use 5 hints wisely',
+type: QuestType.upgrade,
+tier: QuestTier.easy,
+targetValue: 5,
+baseGoldReward: 120,
+baseXpReward: 50,
+),
+slotIndex: 3,
+);
+// Slot 4: Social Quest
+questManager.registerQuest(
+DailyQuestV2(
+id: 'quest_slot_4',
+title: 'Word Friend',
+description: 'Challenge 3 friends',
+type: QuestType.social,
+tier: QuestTier.easy,
+targetValue: 3,
+baseGoldReward: 100,
+baseXpReward: 40,
+),
+slotIndex: 4,
+);
+// Slot 5: Achievement Quest
+questManager.registerQuest(
+DailyQuestV2(
+id: 'quest_slot_5',
+title: 'Word Wizard',
+description: 'Find a 8+ letter word',
+type: QuestType.achievement,
+tier: QuestTier.medium,
+targetValue: 1,
+baseGoldReward: 250,
+baseXpReward: 100,
+),
+slotIndex: 5,
+);
+// Slot 6: Bonus Quest
+questManager.registerQuest(
+DailyQuestV2(
+id: 'quest_slot_6',
+title: 'Perfect Puzzle',
+description: 'Complete puzzle without mistakes',
+type: QuestType.bonus,
+tier: QuestTier.special,
+targetValue: 1,
+baseGoldReward: 300,
+baseXpReward: 120,
+baseGemReward: 10,
+),
+slotIndex: 6,
+);
+// Setup streak bonus callbacks
+questManager.onStreakMilestoneReached = (streak) {
+if (GetIt.I.isRegistered<SettingsManager>()) {
+GetIt.I<SettingsManager>().triggerVibration(
+intensity: VibrationIntensity.heavy,
+);
+}
+};
+if (!GetIt.I.isRegistered<questManager>()) {
+    GetIt.I.registerSingleton(questManager);
+  };
+await questManager.loadQuestData();
+await questManager.checkAndResetIfNeeded();
+}
+// Achievement 시스템
+if (!GetIt.I.isRegistered<AchievementManager(>()) {
+    GetIt.I.registerSingleton(AchievementManager());
+  });
+// ── P3 Engine Systems ─────────────────────────────────────
+if (!GetIt.I.isRegistered<GuildWarManager>()) {
+if (!GetIt.I.isRegistered<GuildWarManager(>()) {
+    GetIt.I.registerSingleton(GuildWarManager());
+  });
+}
+if (!GetIt.I.isRegistered<TournamentManager>()) {
+if (!GetIt.I.isRegistered<TournamentManager(>()) {
+    GetIt.I.registerSingleton(TournamentManager());
+  });
+}
+if (!GetIt.I.isRegistered<SeasonalContentManager>()) {
+if (!GetIt.I.isRegistered<SeasonalContentManager(>()) {
+    GetIt.I.registerSingleton(SeasonalContentManager());
+  });
+}
+_registerAchievements();
+_registerDailyQuests();
+// ── Tutorial & Balancing ──────────────────────────────────
+if (!GetIt.I.isRegistered<TutorialManager>()) {
+final tutorialManager = TutorialManager();
+await tutorialManager.initialize();
+tutorialManager.registerTutorial(
+kOnboardingTutorial.id,
+kOnboardingTutorial.steps,
+);
+GetIt.I.registerSingleton<TutorialManager>(tutorialManager);
+}
+if (!GetIt.I.isRegistered<BalancingManager>()) {
+GetIt.I.registerSingleton<BalancingManager>(
+BalancingManager(defaultConfig: kDefaultBalancingConfig),
+);
+}
+// ── Q7 DI Fix: Missing Systems ──────────────────────────
+if (!GetIt.I.isRegistered<BattlePassManager>()) {
+GetIt.I.registerSingleton<BattlePassManager>(BattlePassManager());
+}
+if (!GetIt.I.isRegistered<GachaManager>()) {
+GetIt.I.registerSingleton<GachaManager>(GachaManager());
+}
+if (!GetIt.I.isRegistered<CollectionManager>()) {
+GetIt.I.registerSingleton<CollectionManager>(CollectionManager());
+}
+runApp(const LegendFestivalApp());
+}
+─── System Initialization ─────────────────────────────────────────────
 /// Registers all DI-managed systems. mg_common_game systems first,
 /// then game-specific managers in correct dependency order.
 Future<void> _initializeSystems() async {
-  final di = GetIt.I;
-
-  // ── mg_common_game core: UpgradeManager ──────────────────────────
-  if (!di.isRegistered<UpgradeManager>()) {
-    final upgrades = UpgradeManager();
-    di.registerSingleton<UpgradeManager>(upgrades);
-    _registerUpgrades(upgrades);
-    await upgrades.loadUpgrades();
-  }
-
-  // ── Existing game managers ────────────────────────────────────────
-  if (!di.isRegistered<EconomyManager>()) {
-    di.registerSingleton<EconomyManager>(EconomyManager());
-  }
-
-  if (!di.isRegistered<RaidManager>()) {
-    di.registerSingleton<RaidManager>(RaidManager());
-  }
-
-  if (!di.isRegistered<TeamManager>()) {
-    di.registerSingleton<TeamManager>(TeamManager());
-  }
-
-  if (!di.isRegistered<SocialManager>()) {
-    di.registerSingleton<SocialManager>(SocialManager());
-  }
-
-  if (!di.isRegistered<SeasonManager>()) {
-    di.registerSingleton<SeasonManager>(
-      SeasonManager(di.get<EconomyManager>()),
-    );
-  }
-
-  // ── New mechanic managers ────────────────────────────────────────
-  if (!di.isRegistered<CharacterManager>()) {
-    di.registerSingleton<CharacterManager>(CharacterManager());
-  }
-
-  if (!di.isRegistered<CrossoverManager>()) {
-    di.registerSingleton<CrossoverManager>(CrossoverManager());
-  }
-
-  if (!di.isRegistered<CollectionManager>()) {
-    di.registerSingleton<CollectionManager>(CollectionManager());
-  // ── Retention Systems for DailyHub ────────────────────────
-  if (!GetIt.I.isRegistered<LoginRewardsManager>()) {
+final di = GetIt.I;
+// ── mg_common_game core: UpgradeManager ──────────────────────────
+if (!di.isRegistered<UpgradeManager>()) {
+final upgrades = UpgradeManager();
+di.registerSingleton<UpgradeManager>(upgrades);
+_registerUpgrades(upgrades);
+await upgrades.loadUpgrades();
+}
+// ── Existing game managers ────────────────────────────────────────
+if (!di.isRegistered<EconomyManager>()) {
+di.registerSingleton<EconomyManager>(EconomyManager());
+}
+if (!di.isRegistered<RaidManager>()) {
+di.registerSingleton<RaidManager>(RaidManager());
+}
+if (!di.isRegistered<TeamManager>()) {
+di.registerSingleton<TeamManager>(TeamManager());
+}
+if (!di.isRegistered<SocialManager>()) {
+di.registerSingleton<SocialManager>(SocialManager());
+}
+if (!di.isRegistered<SeasonManager>()) {
+di.registerSingleton<SeasonManager>(
+SeasonManager(di.get<EconomyManager>()),
+);
+}
+// ── New mechanic managers ────────────────────────────────────────
+if (!di.isRegistered<CharacterManager>()) {
+di.registerSingleton<CharacterManager>(CharacterManager());
+}
+if (!di.isRegistered<CrossoverManager>()) {
+di.registerSingleton<CrossoverManager>(CrossoverManager());
+}
+if (!di.isRegistered<CollectionManager>()) {
+di.registerSingleton<CollectionManager>(CollectionManager());
+// ── Retention Systems for DailyHub ────────────────────────
+if (!GetIt.I.isRegistered<LoginRewardsManager>()) {
+if (!GetIt.I.isRegistered<LoginRewardsManager(>()) {
     GetIt.I.registerSingleton(LoginRewardsManager());
-  }
-  if (!GetIt.I.isRegistered<StreakManager>()) {
+  });
+}
+if (!GetIt.I.isRegistered<StreakManager>()) {
+if (!GetIt.I.isRegistered<StreakManager(>()) {
     GetIt.I.registerSingleton(StreakManager());
-  }
-  if (!GetIt.I.isRegistered<DailyChallengeManager>()) {
+  });
+}
+if (!GetIt.I.isRegistered<DailyChallengeManager>()) {
+if (!GetIt.I.isRegistered<DailyChallengeManager(>()) {
     GetIt.I.registerSingleton(DailyChallengeManager());
-  }
-  }
-
-  if (!di.isRegistered<mg_systems.CollectionManager>()) {
-    di.registerSingleton<mg_systems.CollectionManager>(mg_systems.CollectionManager());
-    _registerCollections();
-  }
-
-  // Apply saved upgrade effects to managers
-  _applyUpgradeEffects(di.get<UpgradeManager>());
+  });
 }
-
+}
+if (!di.isRegistered<mg_systems.CollectionManager>()) {
+di.registerSingleton<mg_systems.CollectionManager>(mg_systems.CollectionManager());
+_registerCollections();
+}
+// Apply saved upgrade effects to managers
+_applyUpgradeEffects(di.get<UpgradeManager>());
+}
 void _registerCollections() {
-  final collection = GetIt.I<mg_systems.CollectionManager>();
-
-  collection.registerCollection(mg_systems.Collection(
-    id: 'characters',
-    name: '캐릭터',
-    description: '모든 캐릭터를 수집하세요',
-    items: [
-      const mg_systems.CollectionItem(
-        id: 'char_warrior',
-        name: '전사',
-        description: '강인한 근접 전투 캐릭터',
-        rarity: mg_systems.CollectionRarity.common,
-      ),
-      const mg_systems.CollectionItem(
-        id: 'char_mage',
-        name: '마법사',
-        description: '강력한 마법 공격 캐릭터',
-        rarity: mg_systems.CollectionRarity.rare,
-      ),
-      const mg_systems.CollectionItem(
-        id: 'char_archer',
-        name: '궁수',
-        description: '원거리 정밀 공격 캐릭터',
-        rarity: mg_systems.CollectionRarity.rare,
-      ),
-      const mg_systems.CollectionItem(
-        id: 'char_assassin',
-        name: '암살자',
-        description: '치명적인 은신 공격 캐릭터',
-        rarity: mg_systems.CollectionRarity.epic,
-      ),
-      const mg_systems.CollectionItem(
-        id: 'char_healer',
-        name: '힐러',
-        description: '팀을 치유하는 지원 캐릭터',
-        rarity: mg_systems.CollectionRarity.legendary,
-      ),
-    ],
-    completionReward: const mg_systems.CollectionReward(
-      type: mg_systems.RewardType.gold,
-      amount: 10000,
-    ),
-    milestoneRewards: {
-      25: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 1000),
-      50: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 3000),
-      75: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 5000),
-    },
-  ));
-
-  collection.onItemUnlocked = (collectionId, itemId) {
-    debugPrint('Collection item unlocked: $collectionId / $itemId');
-  };
-}
-
+final collection = GetIt.I<mg_systems.CollectionManager>();
+collection.registerCollection(mg_systems.Collection(
+id: 'characters',
+name: '캐릭터',
+description: '모든 캐릭터를 수집하세요',
+items: [
+const mg_systems.CollectionItem(
+id: 'char_warrior',
+name: '전사',
+description: '강인한 근접 전투 캐릭터',
+rarity: mg_systems.CollectionRarity.common,
+),
+const mg_systems.CollectionItem(
+id: 'char_mage',
+name: '마법사',
+description: '강력한 마법 공격 캐릭터',
+rarity: mg_systems.CollectionRarity.rare,
+),
+const mg_systems.CollectionItem(
+id: 'char_archer',
+name: '궁수',
+description: '원거리 정밀 공격 캐릭터',
+rarity: mg_systems.CollectionRarity.rare,
+),
+const mg_systems.CollectionItem(
+id: 'char_assassin',
+name: '암살자',
+description: '치명적인 은신 공격 캐릭터',
+rarity: mg_systems.CollectionRarity.epic,
+),
+const mg_systems.CollectionItem(
+id: 'char_healer',
+name: '힐러',
+description: '팀을 치유하는 지원 캐릭터',
+rarity: mg_systems.CollectionRarity.legendary,
+),
+],
+completionReward: const mg_systems.CollectionReward(
+type: mg_systems.RewardType.gold,
+amount: 10000,
+),
+milestoneRewards: {
+25: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 1000),
+50: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 3000),
+75: const mg_systems.CollectionReward(type: mg_systems.RewardType.gold, amount: 5000),
+},
+));
+collection.onItemUnlocked = (collectionId, itemId) {
+debugPrint('Collection item unlocked: $collectionId / $itemId');
+};
+// }
+// 
 // ═══════════════════════════════════════════════════════════════════════
-// Upgrade Registration — 8 crossover-hub upgrades
+// Upgrade Registration -- 8 crossover-hub upgrades
 // Categories: character (3), crossover (2), collection (3)
 // ═══════════════════════════════════════════════════════════════════════
 
@@ -359,7 +501,7 @@ void _applyUpgradeEffects(UpgradeManager upgradeManager) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// App Root — MultiProvider wraps all game state
+// App Root -- MultiProvider wraps all game state
 // ═══════════════════════════════════════════════════════════════════════
 
 class LegendFestivalApp extends StatelessWidget {
@@ -384,36 +526,39 @@ class LegendFestivalApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Legend Festival',
+      supportedLocales: mgSupportedLocales,
+      localizationsDelegates: mgLocalizationDelegates,
+                localizationsDelegates: mgLocalizationDelegates,
         debugShowCheckedModeBanner: false,
         theme: _buildTheme(),
         routes: {
-        '/daily-hub': (context) => DailyHubScreen(
-          questManager: GetIt.I<DailyQuestManager>(),
-          loginRewardsManager: GetIt.I<LoginRewardsManager>(),
-          streakManager: GetIt.I<StreakManager>(),
-          challengeManager: GetIt.I<DailyChallengeManager>(),
-          accentColor: MGColors.primaryAction,
-          onClose: () => Navigator.pop(context),
-        ),
-        
+        // Temporarily disabled - managers not yet implemented
+        // '/daily-hub': (context) => DailyHubScreen(
+        //   questManager: GetIt.I<DailyQuestManager>(),
+        //   loginRewardsManager: GetIt.I<LoginRewardsManager>(),
+        //   streakManager: GetIt.I<StreakManager>(),
+        //   challengeManager: GetIt.I<DailyChallengeManager>(),
+        //   accentColor: MGColors.primaryAction,
+        //   onClose: () => Navigator.pop(context),
+        //   ),
         '/collection': (context) => CollectionScreen(
           collectionManager: GetIt.I<mg_systems.CollectionManager>(),
         ),
-          '/guild-war': (context) => GuildWarScreen(
-            guildWarManager: GetIt.I<GuildWarManager>(),
-            accentColor: MGColors.primaryAction,
-            onClose: () => Navigator.pop(context),
-            ),
-          '/tournament': (context) => TournamentScreen(
-            tournamentManager: GetIt.I<TournamentManager>(),
-            accentColor: MGColors.primaryAction,
-            onClose: () => Navigator.pop(context),
-            ),
-          '/seasonal-event': (context) => SeasonalEventScreen(
-            seasonalContentManager: GetIt.I<SeasonalContentManager>(),
-            accentColor: MGColors.primaryAction,
-            onClose: () => Navigator.pop(context),
-            ),
+        // '/guild-war': (context) => GuildWarScreen(
+        //   guildWarManager: GetIt.I<GuildWarManager>(),
+        //   accentColor: MGColors.primaryAction,
+        //   onClose: () => Navigator.pop(context),
+        //   ),
+        // '/tournament': (context) => TournamentScreen(
+        //   tournamentManager: GetIt.I<TournamentManager>(),
+        //   accentColor: MGColors.primaryAction,
+        //   onClose: () => Navigator.pop(context),
+        //   ),
+        // '/seasonal-event': (context) => SeasonalEventScreen(
+        //   seasonalContentManager: GetIt.I<SeasonalContentManager>(),
+        //   accentColor: MGColors.primaryAction,
+        //   onClose: () => Navigator.pop(context),
+        //   ),
 },
         home: const HubScreen(),
       ),
@@ -453,7 +598,7 @@ class LegendFestivalApp extends StatelessWidget {
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// Upgrade Display Widget — reusable upgrade-list UI integration
+// Upgrade Display Widget -- reusable upgrade-list UI integration
 // ═══════════════════════════════════════════════════════════════════════
 
 /// Displays all registered upgrades grouped by category.
@@ -537,7 +682,7 @@ class UpgradeListWidget extends StatelessWidget {
         ),
         subtitle: Text(upgrade.description),
         trailing: isMaxLevel
-            ? const Chip(label: Text('MAX'))
+            ? const Chip(label: Text('ui_general_time_attack_max_distance_in'.tr))
             : ElevatedButton(
                 onPressed: canAfford
                     ? () {
@@ -551,7 +696,7 @@ class UpgradeListWidget extends StatelessWidget {
                         }
                       }
                     : null,
-                child: Text('$cost coins'),
+                child: Text('ui_general_cost_coins_2'.tr),
               ),
       ),
     );
@@ -561,29 +706,29 @@ class UpgradeListWidget extends StatelessWidget {
 
 void _registerDailyQuests() {
   final dailyQuest = GetIt.I<DailyQuestManager>();
-  
+
   dailyQuest.registerQuest(DailyQuest(
-    id: 'collect_gold',
-    title: '골드 모으기',
-    description: '골드 1000 획득',
-    targetValue: 1000,
+    id: 'crossover_events',
+    title: '크로스오버 이벤트',
+    description: '크로스오버 이벤트 3회 참여',
+    targetValue: 3,
     goldReward: 500,
     xpReward: 10,
   ));
-  
+
   dailyQuest.registerQuest(DailyQuest(
-    id: 'play_games',
-    title: '게임 플레이',
-    description: '게임 5판 플레이',
-    targetValue: 5,
+    id: 'legend_raids',
+    title: '전설 레이드',
+    description: '전설 레이드 2회 클리어',
+    targetValue: 2,
     goldReward: 300,
     xpReward: 5,
   ));
-  
+
   dailyQuest.registerQuest(DailyQuest(
-    id: 'level_up',
-    title: '레벨업',
-    description: '레벨 1 상승',
+    id: 'summon_legends',
+    title: '전설 영웅 소환',
+    description: '전설 영웅 1명 소환',
     targetValue: 1,
     goldReward: 200,
     xpReward: 3,

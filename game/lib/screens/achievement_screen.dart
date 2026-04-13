@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
+import 'package:mg_common_game/core/localization/localization.dart';
 // ============================================================
-// Achievement Screen — MG-0024 Legend Festival: Cross Event
+// Achievement Screen -- MG-0024 Legend Festival: Cross Event
 // Genre: Crossgame / Raid / Event · Retention System UI
 //
 // Template: Based on MG-0008 canonical template.

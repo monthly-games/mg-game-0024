@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mg_common_game/core/localization/localization.dart';
 import 'package:provider/provider.dart';
-import '../features/social/social_manager.dart';
+import '../features/social/social_manager.dart';import 'package:mg_common_game/l10n/localization.dart';
+
 
 class LeaderboardScreen extends StatelessWidget {
   const LeaderboardScreen({super.key});
@@ -11,7 +13,7 @@ class LeaderboardScreen extends StatelessWidget {
     final entries = manager.globalLeaderboard;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Rankings')),
+      appBar: AppBar(title: Text('progress_global_rankings'.tr)),
       body: ListView.separated(
         itemCount: entries.length,
         separatorBuilder: (_, __) => const Divider(),

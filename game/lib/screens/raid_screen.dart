@@ -1,3 +1,5 @@
+import 'package:mg_common_game/core/ui/layout/mg_spacing.dart';
+import 'package:mg_common_game/core/localization/localization.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +8,8 @@ import '../features/meta/economy_manager.dart';
 import '../features/meta/season_manager.dart';
 import '../features/raid/game/raid_game.dart';
 import '../features/raid/raid_manager.dart';
-import 'package:mg_common_game/core/ui/theme/mg_colors.dart';
+import 'package:mg_common_game/core/ui/theme/mg_colors.dart';import 'package:mg_common_game/l10n/localization.dart';
+
 
 class RaidScreen extends StatefulWidget {
   const RaidScreen({super.key});
@@ -65,7 +68,7 @@ class _RaidScreenState extends State<RaidScreen> {
 
                 // Quit Button
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(MGSpacing.md),
                   child: ElevatedButton(
                     onPressed: () {
                       context.read<RaidManager>().endRaid();
@@ -100,7 +103,7 @@ class _BossHealthBar extends StatelessWidget {
     final percentage = boss.currentHp / boss.maxHp;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(MGSpacing.md),
       child: Column(
         children: [
           Text(
@@ -112,14 +115,14 @@ class _BossHealthBar extends StatelessWidget {
               shadows: [Shadow(blurRadius: 4, color: Colors.black)],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: MGSpacing.xs),
           LinearProgressIndicator(
             value: percentage,
             minHeight: 20,
             backgroundColor: Colors.black54,
             color: MGColors.error,
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: MGSpacing.xxs),
           Text(
             '${boss.currentHp.toInt()} / ${boss.maxHp.toInt()}',
             style: const TextStyle(color: MGColors.textHighEmphasis),
@@ -152,13 +155,13 @@ class _ResultOverlay extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: MGSpacing.md),
               ElevatedButton(
                 onPressed: () {
                   context.read<RaidManager>().endRaid();
                   Navigator.of(context).pop();
                 },
-                child: const Text('Return to Hub'),
+                child: Text('ui_general_return_to_hub'.tr),
               ),
             ],
           ),

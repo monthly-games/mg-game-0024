@@ -53,30 +53,30 @@ class PerformerGachaAdapter extends ChangeNotifier {
   List<GachaItem> _generateItems() {
     return [
       // UR (0.6%)
-      const GachaItem(id: 'ur_festival_001', nameKr: '전설의 Performer', rarity: GachaRarity.ultraRare),
-      const GachaItem(id: 'ur_festival_002', nameKr: '신화의 Performer', rarity: GachaRarity.ultraRare),
+      GachaItem(id: 'ur_festival_001', nameKr: '전설의 Performer', rarity: GachaRarity.ultraRare),
+      GachaItem(id: 'ur_festival_002', nameKr: '신화의 Performer', rarity: GachaRarity.ultraRare),
       // SSR (2.4%)
-      const GachaItem(id: 'ssr_festival_001', nameKr: '영웅의 Performer', rarity: GachaRarity.superRare),
-      const GachaItem(id: 'ssr_festival_002', nameKr: '고대의 Performer', rarity: GachaRarity.superRare),
-      const GachaItem(id: 'ssr_festival_003', nameKr: '황금의 Performer', rarity: GachaRarity.superRare),
+      GachaItem(id: 'ssr_festival_001', nameKr: '영웅의 Performer', rarity: GachaRarity.superRare),
+      GachaItem(id: 'ssr_festival_002', nameKr: '고대의 Performer', rarity: GachaRarity.superRare),
+      GachaItem(id: 'ssr_festival_003', nameKr: '황금의 Performer', rarity: GachaRarity.superRare),
       // SR (12%)
-      const GachaItem(id: 'sr_festival_001', nameKr: '희귀한 Performer A', rarity: GachaRarity.superRare),
-      const GachaItem(id: 'sr_festival_002', nameKr: '희귀한 Performer B', rarity: GachaRarity.superRare),
-      const GachaItem(id: 'sr_festival_003', nameKr: '희귀한 Performer C', rarity: GachaRarity.superRare),
-      const GachaItem(id: 'sr_festival_004', nameKr: '희귀한 Performer D', rarity: GachaRarity.superRare),
+      GachaItem(id: 'sr_festival_001', nameKr: '희귀한 Performer A', rarity: GachaRarity.superRare),
+      GachaItem(id: 'sr_festival_002', nameKr: '희귀한 Performer B', rarity: GachaRarity.superRare),
+      GachaItem(id: 'sr_festival_003', nameKr: '희귀한 Performer C', rarity: GachaRarity.superRare),
+      GachaItem(id: 'sr_festival_004', nameKr: '희귀한 Performer D', rarity: GachaRarity.superRare),
       // R (35%)
-      const GachaItem(id: 'r_festival_001', nameKr: '우수한 Performer A', rarity: GachaRarity.rare),
-      const GachaItem(id: 'r_festival_002', nameKr: '우수한 Performer B', rarity: GachaRarity.rare),
-      const GachaItem(id: 'r_festival_003', nameKr: '우수한 Performer C', rarity: GachaRarity.rare),
-      const GachaItem(id: 'r_festival_004', nameKr: '우수한 Performer D', rarity: GachaRarity.rare),
-      const GachaItem(id: 'r_festival_005', nameKr: '우수한 Performer E', rarity: GachaRarity.rare),
+      GachaItem(id: 'r_festival_001', nameKr: '우수한 Performer A', rarity: GachaRarity.rare),
+      GachaItem(id: 'r_festival_002', nameKr: '우수한 Performer B', rarity: GachaRarity.rare),
+      GachaItem(id: 'r_festival_003', nameKr: '우수한 Performer C', rarity: GachaRarity.rare),
+      GachaItem(id: 'r_festival_004', nameKr: '우수한 Performer D', rarity: GachaRarity.rare),
+      GachaItem(id: 'r_festival_005', nameKr: '우수한 Performer E', rarity: GachaRarity.rare),
       // N (50%)
-      const GachaItem(id: 'n_festival_001', nameKr: '일반 Performer A', rarity: GachaRarity.normal),
-      const GachaItem(id: 'n_festival_002', nameKr: '일반 Performer B', rarity: GachaRarity.normal),
-      const GachaItem(id: 'n_festival_003', nameKr: '일반 Performer C', rarity: GachaRarity.normal),
-      const GachaItem(id: 'n_festival_004', nameKr: '일반 Performer D', rarity: GachaRarity.normal),
-      const GachaItem(id: 'n_festival_005', nameKr: '일반 Performer E', rarity: GachaRarity.normal),
-      const GachaItem(id: 'n_festival_006', nameKr: '일반 Performer F', rarity: GachaRarity.normal),
+      GachaItem(id: 'n_festival_001', nameKr: '일반 Performer A', rarity: GachaRarity.normal),
+      GachaItem(id: 'n_festival_002', nameKr: '일반 Performer B', rarity: GachaRarity.normal),
+      GachaItem(id: 'n_festival_003', nameKr: '일반 Performer C', rarity: GachaRarity.normal),
+      GachaItem(id: 'n_festival_004', nameKr: '일반 Performer D', rarity: GachaRarity.normal),
+      GachaItem(id: 'n_festival_005', nameKr: '일반 Performer E', rarity: GachaRarity.normal),
+      GachaItem(id: 'n_festival_006', nameKr: '일반 Performer F', rarity: GachaRarity.normal),
     ];
   }
 

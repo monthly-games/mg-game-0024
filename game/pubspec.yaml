@@ -7,7 +7,7 @@ environment:
   sdk: ^3.10.3
 
 dependencies:
-  google_mobile_ads: ^5.2.0
+  google_mobile_ads: ^7.0.0
   flutter:
     sdk: flutter
   flame: ^1.13.0
@@ -17,12 +17,16 @@ dependencies:
   provider: ^6.1.1
   equatable: ^2.0.5
   mg_common_game:
-    path: ../../../libs/mg_common_game
+    path: ../libs/mg_common_game
   cupertino_icons: ^1.0.8
 
-  firebase_core: any
-  firebase_analytics: any
+  firebase_core: ^4.6.0
+  firebase_remote_config: ^6.3.0
+  firebase_analytics: ^12.2.0
+  firebase_messaging: ^16.1.3
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
@@ -30,5 +34,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/
+    - assets/audio/sfx/
     - assets/spine/characters/
